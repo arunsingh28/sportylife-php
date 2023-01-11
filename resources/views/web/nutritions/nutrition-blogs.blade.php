@@ -1,0 +1,71 @@
+@extends('layouts.main')
+@section('style')
+@endsection
+@section('content')
+<div class="nutrition_blog">
+    <div class="container">
+        <h2>Nutrition Blogs</h2>
+        <div class="row">
+            @foreach($blogs as $item)
+            <div class="col-lg-3 col-md-6 mt-5">
+                <a href="{{url('nutritionblog-details/?id='.$item->id)}}">	<img src="{{asset($item->image)}}" class="w-100" style="height: 50%;"> </a>
+                <div class="bottom_sec">
+                    <h6>{{date('M d, Y',strtotime($item->created_at))}}</h6>
+                    <h3>{!! Str::limit($item->title, 40, ' ...') !!}</h3>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-4 text-left">
+                            <a href="javascript:void(0)"> <img src="{{asset('web/assets/img/eye.svg')}}" style="width: 20px;"> <span> {{$item->view_count}}</span> </a>
+                        </div>
+                        <div class="col-lg-4 col-4 text-center">
+                            <!-- <a href="javascript:void(0)"><img src="{{asset('web/assets/img/liked.svg')}}" style="width: 20px;"> <span> {{$item->like_count}}</span> </a> -->
+                            <a href="javascript:void(0)"><i class="fa fa-thumbs-up fa-lg" style="<?php if($item->is_like == "1"){echo "color:red;";}?>"> </i><span> {{$item->like_count}}</span> </a>
+                        </div>
+                        <div class="col-lg-4 col-4 text-right">
+                            <a href="javascript:void(0)"><img src="{{asset('web/assets/img/shares.svg')}}" style="width: 20px;"> <span> {{$item->share_count}}</span> </a> 
+                        </div>
+                    </div>
+                </div>	
+
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+@endsection
+@section('script')
+<script>
+    function likeblog(id) {
+    var like = $('#likecount').text();
+    
+    $.ajax({
+        url: "{{url('blogLike')}}",
+        type: 'post',
+        dataType: 'text',
+        data: {
+            'blog_id':id,
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data){
+            console.log(data);
+            var res = JSON.parse(data);
+            if (res.statusCode == "200") {
+                toastr.success(res.message);
+                $('#likecount').text(parseInt(like) + 1);
+                $('#likebutton').css("color","red");
+            }else if(res.statusCode == "300"){
+                toastr.error(res.message)
+                $('#likebutton').css("color","");
+                $('#likecount').text(parseInt(like) - 1);
+            }else{
+                toastr.error(res.message)
+            }
+        },
+        error: function(){
+        }
+    });
+}
+</script>
+@endsection

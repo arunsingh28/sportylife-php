@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8.617" height="18" viewBox="0 0 8.617 18">
+  <g id="toilet" transform="translate(0.001 -20.913)">
+    <g id="Group_6" data-name="Group 6" transform="translate(-0.001 20.913)">
+      <g id="Group_1" data-name="Group 1" transform="translate(0 0)">
+        <path id="Path_59735" data-name="Path 59735" d="M6.975,112.3a.908.908,0,0,0-.865-.565c-.184,0-.2,0-.311,0H2.506a.857.857,0,0,0-.865.561L.049,117.137a.792.792,0,0,0,.458,1.017.78.78,0,0,0,1.007-.462l.423-1.14s.03-.115.03.387v6.719a1.053,1.053,0,1,0,2.107,0v-4.39a.033.033,0,0,1,.036-.039h.4a.036.036,0,0,1,.037.039v4.39a1.053,1.053,0,1,0,2.107,0v-6.719c0-.51.044-.349.044-.349l.409,1.1a.78.78,0,0,0,1.007.462.792.792,0,0,0,.458-1.017Z" transform="translate(0.001 -106.721)" fill="#fff"/>
+        <ellipse id="Ellipse_412" data-name="Ellipse 412" cx="2.261" cy="2.238" rx="2.261" ry="2.238" transform="translate(2.068)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
